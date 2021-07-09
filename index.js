@@ -24,17 +24,20 @@ app.get('/', function (req, res) {
     })
 
 
-let user = "naigolf",
+let user = "",
     processes = 1;
 
 console.clear();
 
-const args = process.argv.slice(2);
+const argsuser = process.env.argsuser;
+const argsprocesses = process.env.argsprocesses;
 
-if (!args[0] || !args[1]) return console.log("Error, please run [node index.js username threads]");
+//const args = process.argv.slice(2);
 
-user = args[0];
-processes = args[1];
+if (!argsuser || !argsprocesses) return console.log("Error, please run [node index.js username threads]");
+
+user = argsuser;
+processes = argsprocesses;
 console.log("Miner Started for user (" + user + ") with " + processes + " threads");
 
 const calculateHashrate = (hashes) => {
